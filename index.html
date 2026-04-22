@@ -1,1 +1,163 @@
-Hello coucou
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Portfolio de Thomas Blanché - Développeur web, projets et contact."
+    />
+    <title>Thomas Blanché | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+            },
+            colors: {
+              brand: {
+                400: "#60A5FA",
+                500: "#3B82F6",
+                600: "#2563EB",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="bg-slate-950 text-slate-100 antialiased">
+    <div
+      class="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(37,99,235,0.22),_transparent_45%),radial-gradient(circle_at_80%_80%,_rgba(14,165,233,0.18),_transparent_35%)]"
+    ></div>
+
+    <header class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur">
+      <nav
+        class="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4 md:px-8"
+        aria-label="Navigation principale"
+      >
+        <a href="#accueil" class="text-lg font-bold tracking-tight text-white">
+          TB<span class="text-brand-400">.</span>
+        </a>
+        <ul class="flex items-center gap-2 text-sm font-medium md:gap-6">
+          <li>
+            <a href="#accueil" class="rounded px-3 py-2 text-slate-200 transition hover:text-white">
+              Accueil
+            </a>
+          </li>
+          <li>
+            <a href="#projets" class="rounded px-3 py-2 text-slate-200 transition hover:text-white">
+              Projets
+            </a>
+          </li>
+          <li>
+            <a
+              href="#contact"
+              class="rounded bg-brand-500 px-3 py-2 text-white transition hover:bg-brand-600"
+            >
+              Contact
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main id="accueil" class="mx-auto w-full max-w-6xl px-5 md:px-8">
+      <section class="flex min-h-[70vh] items-center py-16 md:py-24">
+        <div class="max-w-3xl">
+          <p class="mb-4 inline-flex rounded-full border border-brand-400/30 bg-brand-500/10 px-4 py-1 text-sm text-brand-400">
+            Portfolio • Développeur Web
+          </p>
+          <h1 class="text-4xl font-extrabold leading-tight text-white sm:text-5xl md:text-6xl">
+            Thomas Blanché
+          </h1>
+          <p class="mt-6 max-w-2xl text-base leading-relaxed text-slate-300 md:text-lg">
+            Je conçois des interfaces modernes, performantes et accessibles. Ce portfolio présente quelques projets
+            récents, du concept à la mise en production.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a
+              href="#projets"
+              class="rounded-lg bg-brand-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-600"
+            >
+              Voir mes projets
+            </a>
+            <a
+              href="#contact"
+              class="rounded-lg border border-white/20 px-5 py-3 text-sm font-semibold text-slate-100 transition hover:border-white/40"
+            >
+              Me contacter
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="projets" class="py-16 md:py-20">
+        <div class="mb-10 flex items-end justify-between gap-4">
+          <div>
+            <h2 class="text-3xl font-bold text-white">Projets sélectionnés</h2>
+            <p class="mt-3 text-slate-300">Une galerie de réalisations web orientées design et expérience utilisateur.</p>
+          </div>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <article class="group rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-brand-400/40 hover:bg-white/10">
+            <div class="mb-4 h-40 rounded-xl bg-gradient-to-br from-brand-600/60 to-cyan-400/40"></div>
+            <h3 class="text-xl font-semibold text-white">Dashboard Analytics</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-300">
+              Interface de pilotage avec visualisation de données, filtres et export en temps réel.
+            </p>
+            <a href="#" class="mt-5 inline-block text-sm font-medium text-brand-400 transition group-hover:text-brand-300">
+              Voir le projet →
+            </a>
+          </article>
+
+          <article class="group rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-brand-400/40 hover:bg-white/10">
+            <div class="mb-4 h-40 rounded-xl bg-gradient-to-br from-fuchsia-500/50 to-brand-500/40"></div>
+            <h3 class="text-xl font-semibold text-white">Site Vitrine Premium</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-300">
+              Landing page responsive, optimisée SEO et intégration d'animations fluides.
+            </p>
+            <a href="#" class="mt-5 inline-block text-sm font-medium text-brand-400 transition group-hover:text-brand-300">
+              Voir le projet →
+            </a>
+          </article>
+
+          <article class="group rounded-2xl border border-white/10 bg-white/5 p-6 transition hover:-translate-y-1 hover:border-brand-400/40 hover:bg-white/10">
+            <div class="mb-4 h-40 rounded-xl bg-gradient-to-br from-emerald-500/40 to-sky-500/40"></div>
+            <h3 class="text-xl font-semibold text-white">Application eCommerce</h3>
+            <p class="mt-3 text-sm leading-relaxed text-slate-300">
+              Parcours d'achat complet avec catalogue dynamique, panier persistant et checkout simplifié.
+            </p>
+            <a href="#" class="mt-5 inline-block text-sm font-medium text-brand-400 transition group-hover:text-brand-300">
+              Voir le projet →
+            </a>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" class="mt-10 border-t border-white/10">
+      <div class="mx-auto flex w-full max-w-6xl flex-col items-start justify-between gap-4 px-5 py-10 text-sm text-slate-300 md:flex-row md:items-center md:px-8">
+        <p>© <span id="year"></span> Thomas Blanché. Tous droits réservés.</p>
+        <div class="flex items-center gap-4">
+          <a href="mailto:contact@exemple.com" class="transition hover:text-white">contact@exemple.com</a>
+          <a href="#" class="transition hover:text-white">LinkedIn</a>
+          <a href="#" class="transition hover:text-white">GitHub</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>
