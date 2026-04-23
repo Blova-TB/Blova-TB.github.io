@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Portfolio de Thomas Blanché - Développeur web, projets et contact."
+      content="Thomas Blanché — Master Jeux Vidéo (UQAC), futur ingénieur Polytech Lyon. Game programming, réseau, IA et stack fullstack."
     />
     <title>Thomas Blanché | Portfolio</title>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -47,10 +47,15 @@
         <a href="#accueil" class="text-lg font-bold tracking-tight text-white">
           TB<span class="text-brand-400">.</span>
         </a>
-        <ul class="flex items-center gap-2 text-sm font-medium md:gap-6">
+        <ul class="flex flex-wrap items-center justify-end gap-1 text-sm font-medium sm:gap-2 md:gap-6">
           <li>
             <a href="#accueil" class="rounded px-3 py-2 text-slate-200 transition hover:text-white">
               Accueil
+            </a>
+          </li>
+          <li>
+            <a href="#competences" class="rounded px-3 py-2 text-slate-200 transition hover:text-white">
+              Compétences
             </a>
           </li>
           <li>
@@ -70,25 +75,34 @@
       </nav>
     </header>
 
-    <main id="accueil" class="mx-auto w-full max-w-6xl px-5 md:px-8">
+    <main id="accueil" class="mx-auto w-full max-w-6xl scroll-mt-24 px-5 md:px-8">
       <section class="flex min-h-[70vh] items-center py-16 md:py-24">
         <div class="max-w-3xl">
           <p class="mb-4 inline-flex rounded-full border border-brand-400/30 bg-brand-500/10 px-4 py-1 text-sm text-brand-400">
-            Portfolio • Développeur Web
+            Élève Ingénieur • Master Jeux Vidéo
           </p>
           <h1 class="text-4xl font-extrabold leading-tight text-white sm:text-5xl md:text-6xl">
             Thomas Blanché
           </h1>
           <p class="mt-6 max-w-2xl text-base leading-relaxed text-slate-300 md:text-lg">
-            Je conçois des interfaces modernes, performantes et accessibles. Ce portfolio présente quelques projets
-            récents, du concept à la mise en production.
+            Étudiant en Master Jeux Vidéo à l'UQAC et futur ingénieur de Polytech Lyon. Je suis un développeur de jeux
+            vidéo doté d'une curiosité technique transversale, j'ai exploré des domaines variés tels que le réseau
+            (multiplayer), l'IA ou encore l'optimisation. Mon expérience sur plusieurs moteurs (Unreal, Unity, Godot) me permet de
+            m'adapter rapidement aux contraintes techniques et de naviguer avec agilité entre les différentes briques
+            d'un projet.
+          </p>
+          <p
+            class="mt-5 inline-flex max-w-2xl rounded-full border border-amber-300/35 bg-amber-400/10 px-4 py-1.5 text-xs font-medium text-amber-200 sm:text-sm"
+          >
+            Recherche de stage de fin d'études (22 semaines min.) dans le milieu du jeu vidéo à partir de septembre
+            2026
           </p>
           <div class="mt-8 flex flex-wrap gap-4">
             <a
-              href="#projets"
+              href="#competences"
               class="rounded-lg bg-brand-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-600"
             >
-              Voir mes projets
+              Mes compétences
             </a>
             <a
               href="#contact"
@@ -100,7 +114,89 @@
         </div>
       </section>
 
-      <section id="projets" class="py-16 md:py-20">
+      <section
+        id="competences"
+        class="scroll-mt-24 rounded-2xl border border-slate-800 bg-slate-900/50 px-5 py-14 shadow-[0_0_0_1px_rgba(15,23,42,0.6)] md:px-8 md:py-16"
+        aria-labelledby="competences-heading"
+      >
+        <div class="mb-10 max-w-2xl">
+          <p class="font-mono text-xs font-medium uppercase tracking-widest text-brand-400">Expertise technique</p>
+          <h2 id="competences-heading" class="mt-2 text-3xl font-bold tracking-tight text-white">
+            Compétences acquises lors de mon double diplôme à l'UQAC et à Polytech Lyon
+          </h2>
+          
+        </div>
+
+        <div class="grid gap-6 lg:grid-cols-3">
+          <article
+            class="flex flex-col rounded-xl border border-slate-800 bg-slate-950/60 p-6 transition hover:border-slate-700"
+          >
+            <h3 class="text-lg font-semibold text-white">Game Programming &amp; Engines</h3>
+            <dl class="mt-5 space-y-4 text-sm text-slate-300">
+              <div>
+                <dt class="font-mono text-xs uppercase tracking-wide text-slate-500">Langages</dt>
+                <dd class="mt-1 leading-relaxed">C++, C#, Blueprints.</dd>
+              </div>
+              <div>
+                <dt class="font-mono text-xs uppercase tracking-wide text-slate-500">Moteurs</dt>
+                <dd class="mt-1 leading-relaxed">Unreal Engine, Godot, Unity.</dd>
+              </div>
+              <div>
+                <dt class="font-mono text-xs uppercase tracking-wide text-slate-500">Architecture</dt>
+                <dd class="mt-1 leading-relaxed">Game Loop, Gameplay systems.</dd>
+              </div>
+            </dl>
+          </article>
+
+          <article
+            class="flex flex-col rounded-xl border border-slate-800 bg-slate-950/60 p-6 transition hover:border-slate-700"
+          >
+            <h3 class="text-lg font-semibold text-white">Systèmes avancés &amp; Networking</h3>
+            <dl class="mt-5 space-y-4 text-sm text-slate-300">
+              <div>
+                <dt class="font-mono text-xs uppercase tracking-wide text-slate-500">Multiplayer</dt>
+                <dd class="mt-1 leading-relaxed">
+                  Programmation réseau (réplication, prédiction/correction, matchmaking).
+                </dd>
+              </div>
+              <div>
+                <dt class="font-mono text-xs uppercase tracking-wide text-slate-500">Optimisation</dt>
+                <dd class="mt-1 leading-relaxed">
+                  Modélisation mathématique, optimisation numérique (Matlab, solveurs), gestion de la performance.
+                </dd>
+              </div>
+              <div>
+                <dt class="font-mono text-xs uppercase tracking-wide text-slate-500">IA</dt>
+                <dd class="mt-1 leading-relaxed">Intelligence artificielle appliquée aux comportements de jeu.</dd>
+              </div>
+            </dl>
+          </article>
+
+          <article
+            class="flex flex-col rounded-xl border border-slate-800 bg-slate-950/60 p-6 transition hover:border-slate-700"
+          >
+            <h3 class="text-lg font-semibold text-white">Web, sécurité &amp; méthodologie</h3>
+            <dl class="mt-5 space-y-4 text-sm text-slate-300">
+              <div>
+                <dt class="font-mono text-xs uppercase tracking-wide text-slate-500">Fullstack</dt>
+                <dd class="mt-1 leading-relaxed">Java Spring Boot, Angular, Next.js, PostgreSQL.</dd>
+              </div>
+              <div>
+                <dt class="font-mono text-xs uppercase tracking-wide text-slate-500">Sécurité</dt>
+                <dd class="mt-1 leading-relaxed">
+                  Concepts de cybersécurité, contrôle d'accès et sécurisation des flux.
+                </dd>
+              </div>
+              <div>
+                <dt class="font-mono text-xs uppercase tracking-wide text-slate-500">Workflow</dt>
+                <dd class="mt-1 leading-relaxed">Méthode Agile/Scrum, Git, Perforce.</dd>
+              </div>
+            </dl>
+          </article>
+        </div>
+      </section>
+
+      <section id="projets" class="scroll-mt-24 py-16 md:py-20">
         <div class="mb-10 flex items-end justify-between gap-4">
           <div>
             <h2 class="text-3xl font-bold text-white">Projets sélectionnés</h2>
@@ -145,13 +241,19 @@
       </section>
     </main>
 
-    <footer id="contact" class="mt-10 border-t border-white/10">
+    <footer id="contact" class="scroll-mt-24 mt-10 border-t border-white/10">
       <div class="mx-auto flex w-full max-w-6xl flex-col items-start justify-between gap-4 px-5 py-10 text-sm text-slate-300 md:flex-row md:items-center md:px-8">
         <p>© <span id="year"></span> Thomas Blanché. Tous droits réservés.</p>
         <div class="flex items-center gap-4">
-          <a href="mailto:contact@exemple.com" class="transition hover:text-white">contact@exemple.com</a>
-          <a href="#" class="transition hover:text-white">LinkedIn</a>
-          <a href="#" class="transition hover:text-white">GitHub</a>
+          <a href="mailto:thomas.baptiste.blanche@gmail.com" class="transition hover:text-white"
+            >thomas.baptiste.blanche@gmail.com</a
+          >
+          <a href="https://www.linkedin.com/in/thomas-blanche/" class="transition hover:text-white">
+            LinkedIn
+          </a>
+          <a href="https://github.com/Blova-TB" target="_blank" rel="noreferrer" class="transition hover:text-white">
+            GitHub
+          </a>
         </div>
       </div>
     </footer>
