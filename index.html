@@ -253,9 +253,11 @@
                 categories: ['Jam', 'Expérience', 'Projet', 'TP/Apprentissage'],
                 activeCategory: 'Jam',
                 touchStartX: 0,
+                touchStartY: 0,
                 currentX: 0,
                 dragOffset: 0,
                 isDragging: false,
+                isScrolling: null,
                 items: [],
                 itemsByCategory() { return []; },
                 setCategory() {},
@@ -306,7 +308,7 @@
             @mouseup="endDrag"
             @mouseleave="endDrag"
             @touchstart="startDrag"
-            @touchmove.prevent="onDrag"
+            @touchmove="onDrag"
             @touchend="endDrag"
           >
             <div

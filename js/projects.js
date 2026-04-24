@@ -2,9 +2,11 @@ const buildPortfolioData = () => ({
   categories: ["Jam", "Expérience", "Projet", "TP/Apprentissage"],
   activeCategory: "Jam",
   touchStartX: 0,
+  touchStartY: 0,
   currentX: 0,
   dragOffset: 0,
   isDragging: false,
+  isScrolling: null,
   items: [
     {
       titre: "WonderJam",
@@ -125,18 +127,46 @@ const buildPortfolioData = () => ({
   startDrag(e) {
     this.isDragging = true;
     const pointerX = e.touches ? e.touches[0].clientX : e.clientX;
+    const pointerY = e.touches ? e.touches[0].clientY : e.clientY;
     this.touchStartX = pointerX;
+    this.touchStartY = pointerY;
     this.currentX = pointerX;
     this.dragOffset = 0;
+    this.isScrolling = null;
   },
   onDrag(e) {
     if (!this.isDragging) return;
     const pointerX = e.touches ? e.touches[0].clientX : e.clientX;
+    const pointerY = e.touches ? e.touches[0].clientY : e.clientY;
+
+    if (this.isScrolling === null) {
+      const deltaX = Math.abs(pointerX - this.touchStartX);
+      const deltaY = Math.abs(pointerY - this.touchStartY);
+      if (deltaY > deltaX && deltaY > 3) {
+        this.isScrolling = true;
+      } else if (deltaX > deltaY && deltaX > 3) {
+        this.isScrolling = false;
+      }
+    }
+
+    if (this.isScrolling === true) return;
+
+    if (e.cancelable) {
+      e.preventDefault();
+    }
     this.currentX = pointerX;
     this.dragOffset = this.currentX - this.touchStartX;
   },
   endDrag() {
     if (!this.isDragging) return;
+
+    if (this.isScrolling === true) {
+      this.isScrolling = null;
+      this.isDragging = false;
+      this.dragOffset = 0;
+      return;
+    }
+
     this.isDragging = false;
     if (this.dragOffset < -50) {
       this.nextCategory();
@@ -144,6 +174,7 @@ const buildPortfolioData = () => ({
       this.previousCategory();
     }
     this.dragOffset = 0;
+    this.isScrolling = null;
   },
 });
 
