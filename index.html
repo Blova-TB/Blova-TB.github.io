@@ -207,11 +207,18 @@
             : {
                 categories: ['Jam', 'Expérience', 'Projet', 'TP/Apprentissage'],
                 activeCategory: 'Jam',
+                touchStartX: 0,
+                currentX: 0,
+                dragOffset: 0,
+                isDragging: false,
                 items: [],
                 itemsByCategory() { return []; },
                 setCategory() {},
                 previousCategory() {},
-                nextCategory() {}
+                nextCategory() {},
+                startDrag() {},
+                onDrag() {},
+                endDrag() {}
               }
         "
         aria-labelledby="projets-heading"
@@ -263,10 +270,21 @@
             <span aria-hidden="true">→</span>
           </button>
 
-          <div class="overflow-hidden px-2 py-3 sm:px-3">
+          <div
+            class="overflow-hidden px-2 py-3 sm:px-3 cursor-grab select-none"
+            :class="isDragging ? 'cursor-grabbing' : 'cursor-grab'"
+            @mousedown="startDrag"
+            @mousemove="onDrag"
+            @mouseup="endDrag"
+            @mouseleave="endDrag"
+            @touchstart="startDrag"
+            @touchmove.prevent="onDrag"
+            @touchend="endDrag"
+          >
             <div
-              class="flex w-[400%] transition-transform duration-500 ease-in-out"
-              :style="'transform: translateX(-' + (categories.indexOf(activeCategory) * 25) + '%)'"
+              class="flex w-[400%]"
+              :class="isDragging ? 'transition-none' : 'transition-transform duration-500 ease-in-out'"
+              :style="'transform: translateX(calc(-' + (categories.indexOf(activeCategory) * 25) + '% + ' + dragOffset + 'px))'"
             >
               <template x-for="category in categories" :key="'panel-' + category">
                 <div class="w-full px-2 py-2">
@@ -276,6 +294,8 @@
                         :href="item.lien"
                         :target="item.lien.startsWith('http') ? '_blank' : null"
                         :rel="item.lien.startsWith('http') ? 'noreferrer noopener' : null"
+                        draggable="false"
+                        @click="if (Math.abs(touchStartX - currentX) > 10) $event.preventDefault()"
                         class="group flex flex-col rounded-2xl border border-white/10 bg-white/5 p-6 transition duration-300 hover:scale-105 hover:border-brand-400/40 hover:bg-white/10"
                       >
                         <div
@@ -286,6 +306,7 @@
                             :src="item.image"
                             :alt="`Image du projet ${item.titre}`"
                             loading="lazy"
+                            draggable="false"
                             class="h-40 w-full rounded-xl object-cover"
                             @error="$event.target.remove()"
                           />

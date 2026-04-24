@@ -1,6 +1,10 @@
 const buildPortfolioData = () => ({
   categories: ["Jam", "Expérience", "Projet", "TP/Apprentissage"],
   activeCategory: "Jam",
+  touchStartX: 0,
+  currentX: 0,
+  dragOffset: 0,
+  isDragging: false,
   items: [
     {
       titre: "WonderJam",
@@ -117,6 +121,29 @@ const buildPortfolioData = () => ({
     const current = this.categories.indexOf(this.activeCategory);
     const next = (current + 1) % this.categories.length;
     this.activeCategory = this.categories[next];
+  },
+  startDrag(e) {
+    this.isDragging = true;
+    const pointerX = e.touches ? e.touches[0].clientX : e.clientX;
+    this.touchStartX = pointerX;
+    this.currentX = pointerX;
+    this.dragOffset = 0;
+  },
+  onDrag(e) {
+    if (!this.isDragging) return;
+    const pointerX = e.touches ? e.touches[0].clientX : e.clientX;
+    this.currentX = pointerX;
+    this.dragOffset = this.currentX - this.touchStartX;
+  },
+  endDrag() {
+    if (!this.isDragging) return;
+    this.isDragging = false;
+    if (this.dragOffset < -50) {
+      this.nextCategory();
+    } else if (this.dragOffset > 50) {
+      this.previousCategory();
+    }
+    this.dragOffset = 0;
   },
 });
 
