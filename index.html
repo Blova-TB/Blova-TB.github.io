@@ -201,7 +201,19 @@
       <section
         id="projets"
         class="scroll-mt-24 py-16 md:py-20"
-        x-data="window.portfolioData ? window.portfolioData() : { items: [], fallbackImage: '' }"
+        x-data="
+          window.portfolioData
+            ? window.portfolioData()
+            : {
+                categories: ['Jam', 'Expérience', 'Projet', 'TP/Apprentissage'],
+                activeCategory: 'Jam',
+                items: [],
+                itemsByCategory() { return []; },
+                setCategory() {},
+                previousCategory() {},
+                nextCategory() {}
+              }
+        "
         aria-labelledby="projets-heading"
       >
         <div class="mb-10 flex items-end justify-between gap-4">
@@ -214,41 +226,96 @@
           </div>
         </div>
 
-        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
-          <template x-for="item in items" :key="item.lien">
-            <a
-              :href="item.lien"
-              class="group flex flex-col rounded-2xl border border-white/10 bg-white/5 p-6 transition duration-300 hover:scale-105 hover:border-brand-400/40 hover:bg-white/10"
+        <div class="mb-6 border-b border-white/10">
+          <div class="relative flex flex-wrap gap-2 sm:gap-6">
+            <template x-for="category in categories" :key="category">
+              <button
+                type="button"
+                @click="setCategory(category)"
+                class="relative pb-3 text-sm font-semibold transition"
+                :class="activeCategory === category ? 'text-white' : 'text-slate-400 hover:text-slate-200'"
+                x-text="category"
+              ></button>
+            </template>
+            <div
+              class="pointer-events-none absolute bottom-0 h-0.5 bg-brand-400 transition-all duration-500 ease-in-out"
+              :style="'left:' + (categories.indexOf(activeCategory) * 25) + '%; width: 25%;'"
+            ></div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <button
+            type="button"
+            @click="previousCategory()"
+            class="absolute left-0 top-1/2 z-10 -translate-y-1/2 rounded-full border border-white/20 bg-slate-900/85 p-2 text-slate-200 shadow-lg transition hover:border-brand-400/40 hover:text-white"
+            aria-label="Catégorie précédente"
+          >
+            <span aria-hidden="true">←</span>
+          </button>
+          <button
+            type="button"
+            @click="nextCategory()"
+            class="absolute right-0 top-1/2 z-10 -translate-y-1/2 rounded-full border border-white/20 bg-slate-900/85 p-2 text-slate-200 shadow-lg transition hover:border-brand-400/40 hover:text-white"
+            aria-label="Catégorie suivante"
+          >
+            <span aria-hidden="true">→</span>
+          </button>
+
+          <div class="overflow-hidden">
+            <div
+              class="flex w-[400%] transition-transform duration-500 ease-in-out"
+              :style="'transform: translateX(-' + (categories.indexOf(activeCategory) * 25) + '%)'"
             >
-              <img
-                :src="item.image || fallbackImage"
-                :alt="`Image du projet ${item.titre}`"
-                loading="lazy"
-                class="mb-4 h-40 w-full rounded-xl object-cover"
-                @error="$event.target.src = fallbackImage"
-              />
-              <div class="mb-3 flex flex-wrap items-center gap-2">
-                <span
-                  class="inline-flex rounded-full border px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide"
-                  :class="item.colorClass"
-                  x-text="item.categorie"
-                ></span>
-              </div>
-              <h3 class="text-xl font-semibold text-white" x-text="item.titre"></h3>
-              <div class="mt-3 flex flex-wrap gap-2">
-                <template x-for="tag in item.tags" :key="tag">
-                  <span
-                    class="rounded-md border border-white/10 bg-slate-950/40 px-2 py-0.5 text-xs text-slate-300"
-                    x-text="tag"
-                  ></span>
-                </template>
-              </div>
-              <p class="mt-3 flex-1 text-sm leading-relaxed text-slate-300" x-text="item.description"></p>
-              <span class="mt-5 inline-block text-sm font-medium text-brand-400 transition group-hover:text-brand-300">
-                Voir la fiche →
-              </span>
-            </a>
-          </template>
+              <template x-for="category in categories" :key="'panel-' + category">
+                <div class="w-full px-1 py-2">
+                  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
+                    <template x-for="item in itemsByCategory(category)" :key="item.titre + item.lien">
+                      <a
+                        :href="item.lien"
+                        :target="item.lien.startsWith('http') ? '_blank' : null"
+                        :rel="item.lien.startsWith('http') ? 'noreferrer noopener' : null"
+                        class="group flex flex-col rounded-2xl border border-white/10 bg-white/5 p-6 transition duration-300 hover:scale-105 hover:border-brand-400/40 hover:bg-white/10"
+                      >
+                        <div
+                          class="relative mb-4 h-40 w-full overflow-hidden rounded-xl bg-gradient-to-br"
+                          :class="item.color"
+                        >
+                          <img
+                            :src="item.image"
+                            :alt="`Image du projet ${item.titre}`"
+                            loading="lazy"
+                            class="h-40 w-full rounded-xl object-cover"
+                            @error="$event.target.remove()"
+                          />
+                        </div>
+                        <div class="mb-3 flex flex-wrap items-center gap-2">
+                          <span
+                            class="inline-flex rounded-full border px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wide"
+                            :class="item.colorClass"
+                            x-text="item.categorie"
+                          ></span>
+                        </div>
+                        <h3 class="text-xl font-semibold text-white" x-text="item.titre"></h3>
+                        <div class="mt-3 flex flex-wrap gap-2">
+                          <template x-for="tag in item.tags" :key="tag">
+                            <span
+                              class="rounded-md border border-white/10 bg-slate-950/40 px-2 py-0.5 text-xs text-slate-300"
+                              x-text="tag"
+                            ></span>
+                          </template>
+                        </div>
+                        <p class="mt-3 flex-1 text-sm leading-relaxed text-slate-300" x-text="item.description"></p>
+                        <span class="mt-5 inline-block text-sm font-medium text-brand-400 transition group-hover:text-brand-300">
+                          Voir la fiche →
+                        </span>
+                      </a>
+                    </template>
+                  </div>
+                </div>
+              </template>
+            </div>
+          </div>
         </div>
       </section>
     </main>
