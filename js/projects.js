@@ -1,6 +1,6 @@
 const buildPortfolioData = () => ({
-  categories: ["Jam", "Expérience", "Projet", "TP/Apprentissage"],
-  activeCategory: "Jam",
+  categories: ["Jam", "Projet", "Expérience", "TP/Apprentissage"],
+  activeCategory: "Projet",
   touchStartX: 0,
   touchStartY: 0,
   currentX: 0,
@@ -9,15 +9,23 @@ const buildPortfolioData = () => ({
   isScrolling: null,
   items: [
     {
-      titre: "WonderJam",
+      titre: "MineScam",
       categorie: "Jam",
-      tags: ["Game Jam", "Prototype", "Gameplay"],
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Prototype de jeu conçu en temps contraint avec itérations rapides sur le gameplay.",
-      lien: "#",
-      image: "img/WonderJam.png",
-      colorClass: "border-pink-400/40 bg-pink-500/15 text-pink-200",
-      color: "from-pink-500/40 to-fuchsia-500/40",
+      tags: ["Unreal Engine", "BluePrint", "Mention honorable (WonderJam Automne 2025)"],
+      description: "Jeu de simulation développé pour la WonderJam UQAC. Incarnez un mineur artisan, récoltez des minerais, forgez des armes et peignez-les pour arnaquer vos clients.",
+      lien: "https://alexandre-h.itch.io/minescam",
+      image: "img/MineScam.png",
+      colorClass: "border-amber-400/40 bg-amber-500/15 text-amber-200",
+      color: "from-amber-500/40 to-yellow-500/40",
+    },
+    {
+      titre: "Le Nectar des Étoiles",
+      categorie: "Jam",
+      tags: ["Unreal Engine", "BluePrint", "Narratif", "1ère Place (WonderJam Hiver 2026)"],
+      description: "Court jeu narratif (1ère place WonderJam Hiver 2026). Vivez une journée dans la peau d'un jeune ouvrier d'une station spatiale de production d'Oasis tropical.",
+      lien: "https://blova.itch.io/nectar-des-etoiles",
+      image: "img/LeNectarDesEtoiles.png",
+      color: "from-sky-500/40 to-blue-600/40",
     },
     {
       titre: "Développeur Web Full Stack",
@@ -42,7 +50,37 @@ const buildPortfolioData = () => ({
       color: "from-cyan-500/40 to-blue-500/40",
     },
     {
-      titre: "Automate",
+      titre: "Stellar Echoes",
+      categorie: "Projet",
+      tags: ["Unreal Engine","C++", "FPS", "Énigmes"],
+      description: "Prototype d'exploration et d'énigmes en vue FPS. Incarnez un humain dans une boucle temporelle sur une planète déserte. (Projet UQAC).",
+      lien: "https://oridoshi.itch.io/stellar-echoes",
+      image: "img/StellarEchoes.png",
+      colorClass: "border-emerald-400/40 bg-emerald-500/15 text-emerald-200",
+      color: "from-emerald-500/40 to-teal-500/40",
+    },
+    {
+      titre: "Bomberman UQAC",
+      categorie: "Projet",
+      tags: ["Unreal Engine", "C++", "Multijoueur Local", "Arcade"],
+      description: "Reproduction du célèbre jeu Bomberman en multijoueur local. Développé pour le cours de conception de jeux vidéo à l'UQAC.",
+      lien: "https://blova.itch.io/bomberman-uqac",
+      image: "img/BomberManUQAC.png",
+      colorClass: "border-orange-400/40 bg-orange-500/15 text-orange-200",
+      color: "from-orange-500/40 to-red-500/40",
+    },
+    {
+      titre: "Casse Brique",
+      categorie: "Projet",
+      tags: ["Unreal Engine", "C++", "2D Arcade", "Premier Jeu"],
+      description: "Mon tout premier jeu développé sur Unreal Engine ! Un casse-brique classique en 2D pour découvrir les bases du moteur.",
+      lien: "https://blova.itch.io/cassebrique",
+      image: "img/CasseBrique.png",
+      colorClass: "border-rose-400/40 bg-rose-500/15 text-rose-200",
+      color: "from-rose-500/40 to-pink-500/40",
+    },
+    {
+      titre: "Automate Cellulaire",
       categorie: "Projet",
       tags: ["Java", "Simulation", "Algorithmes"],
       description:
@@ -53,7 +91,7 @@ const buildPortfolioData = () => ({
       color: "from-blue-500/40 to-indigo-500/40",
     },
     {
-      titre: "SOM",
+      titre: "Carte de Kohonen",
       categorie: "Projet",
       tags: ["Python", "IA", "Apprentissage non supervisé"],
       description:
