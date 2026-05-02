@@ -3,18 +3,192 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Stage ESN — Thomas Blanché</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-      rel="stylesheet"
+    <meta
+      name="description"
+      content="Stage de 4e année chez AXOPEN pour le client L'Auxiliaire BTP : refonte d'une application métier full stack, migration AS400 vers PostgreSQL et développement d'un site Next.js."
     />
+    <title>Stage AXOPEN | Refonte d'Application Métier Full Stack</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+            },
+            colors: {
+              brand: {
+                400: "#60A5FA",
+                500: "#3B82F6",
+                600: "#2563EB",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
   </head>
-  <body class="min-h-screen bg-slate-950 font-sans text-slate-100 antialiased" style="font-family: Inter, system-ui, sans-serif">
-    <main class="mx-auto max-w-3xl px-5 py-12 md:px-8">
-      <a href="../index.html#projets" class="text-sm text-blue-400 transition hover:text-blue-300">← Retour au portfolio</a>
-      <h1 class="mt-8 text-3xl font-bold text-white">Stage ESN — Développeur Web Full Stack</h1>
-      <p class="mt-4 text-slate-300">Page de détail à compléter (stack Java Spring Boot, Angular, PostgreSQL).</p>
+  <body class="bg-slate-950 font-sans text-slate-100 antialiased">
+    <div class="fixed inset-0 -z-10 bg-[radial-gradient(circle_at_top,_rgba(59,130,246,0.22),_transparent_42%),radial-gradient(circle_at_85%_15%,_rgba(14,165,233,0.12),_transparent_28%),radial-gradient(circle_at_bottom,_rgba(15,23,42,0.85),_transparent_55%)]"></div>
+
+    <header class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur">
+      <nav class="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4 md:px-8" aria-label="Navigation principale">
+        <a href="../index.html#projets" class="text-sm font-semibold text-slate-200 transition hover:text-white md:text-base">
+          ← Retour au portfolio
+        </a>
+        <a href="https://www.linkedin.com/in/thomas-blanche" target="_blank" class="rounded-full border border-brand-500/40 bg-brand-500/10 px-4 py-2 text-sm font-medium text-brand-400 transition hover:border-brand-400 hover:bg-brand-500/20 hover:text-white">
+          Contact
+        </a>
+      </nav>
+    </header>
+
+    <main class="mx-auto w-full max-w-6xl px-5 pb-16 pt-12 md:px-8 md:pb-24 md:pt-16">
+      <section class="grid gap-8 lg:grid-cols-[minmax(0,1.5fr)_minmax(320px,0.85fr)] lg:items-start">
+        <div class="space-y-8">
+          <div class="inline-flex items-center gap-2 rounded-full border border-brand-500/25 bg-brand-500/10 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.2em] text-brand-400">
+            Stage 4A • AXOPEN • L'Auxiliaire BTP
+          </div>
+          <div class="max-w-3xl">
+            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
+              Refonte d'Application Métier Full Stack
+            </h1>
+            <p class="mt-6 max-w-2xl text-base leading-8 text-slate-300 md:text-lg">
+              Stage 4A chez AXOPEN (21 semaines) pour le client L'Auxiliaire BTP, projet de modernisation visant à
+              faire évoluer un socle applicatif historique vers une architecture plus robuste, maintenable et mieux intégrée aux usages
+              métiers actuels.
+            </p>
+          </div>
+
+          <div class="grid gap-4 sm:grid-cols-3">
+            <article class="rounded-2xl border border-white/10 bg-slate-900/60 p-5 shadow-[0_0_0_1px_rgba(15,23,42,0.4)]">
+              <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Back-end</p>
+              <p class="mt-3 text-sm leading-6 text-slate-200">Java, Spring Boot, API RESTful.</p>
+            </article>
+            <article class="rounded-2xl border border-white/10 bg-slate-900/60 p-5 shadow-[0_0_0_1px_rgba(15,23,42,0.4)]">
+              <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Front-end</p>
+              <p class="mt-3 text-sm leading-6 text-slate-200">Angular, HTML/Sass, TypeScript, Next.js, Strapi.</p>
+            </article>
+            <article class="rounded-2xl border border-white/10 bg-slate-900/60 p-5 shadow-[0_0_0_1px_rgba(15,23,42,0.4)]">
+              <p class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Données &amp; outils</p>
+              <p class="mt-3 text-sm leading-6 text-slate-200">PostgreSQL, SQL, scripts de migration Talend.</p>
+            </article>
+          </div>
+        </div>
+
+        <aside class="rounded-3xl border border-white/10 bg-slate-900/55 p-6 shadow-[0_0_0_1px_rgba(15,23,42,0.45)] backdrop-blur-sm">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-brand-400">Fiche technique</p>
+          <h2 class="mt-3 text-2xl font-bold text-white">Stack et responsabilités</h2>
+          <dl class="mt-6 space-y-5 text-sm leading-6 text-slate-300">
+            <div class="rounded-2xl border border-white/10 bg-slate-950/50 p-4">
+              <dt class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Contexte</dt>
+              <dd class="mt-2">Modernisation d'un système informatique métier critique, en assurant la continuité de service.</dd>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-slate-950/50 p-4">
+              <dt class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Objectif</dt>
+              <dd class="mt-2">simplifier et adapter les utilisations, fiabiliser les données et créer une base technique durable.</dd>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-slate-950/50 p-4">
+              <dt class="text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">Méthode</dt>
+              <dd class="mt-2">Travail itératif avec intégration progressive, validation fonctionnelle et migration par étapes.</dd>
+            </div>
+          </dl>
+        </aside>
+      </section>
+
+      <section class="mt-16 rounded-3xl border border-white/10 bg-slate-900/50 p-7 shadow-[0_0_0_1px_rgba(15,23,42,0.45)] md:p-8">
+        <div class="max-w-3xl">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand-400">Bilan</p>
+          <h2 class="mt-3 text-2xl font-bold text-white">Un stage orienté modernisation, rigueur et continuité de service</h2>
+          <p class="mt-5 text-slate-300 leading-8">
+            Ce stage chez AXOPEN m'a confronté à deux dimensions complémentaires du développement logiciel : la refonte d'un système métier
+            critique, avec ses exigences de migration et de fiabilisation des données, et la construction d'un site public performant,
+            pensé pour le SEO et la gestion de contenu. Dans les deux cas, j'ai travaillé avec des contraintes réelles de production,
+            ce qui m'a permis de renforcer ma rigueur technique et ma capacité à livrer des solutions propres, durables et adaptées au besoin.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="../index.html#projets" class="inline-flex items-center justify-center rounded-full border border-white/15 px-5 py-3 text-sm font-semibold text-slate-200 transition hover:border-brand-400 hover:text-white">
+              ← Retour au portfolio
+            </a>
+            <a href="https://www.linkedin.com/in/thomas-blanche" target="_blank" class="rounded-full inline-flex items-center border border-brand-500/40 bg-brand-500/10 px-4 py-2 text-sm font-medium text-brand-400 transition hover:border-brand-400 hover:bg-brand-500/20 hover:text-white">
+              Me contacter
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-16 grid gap-6 lg:grid-cols-2">
+        <article class="rounded-3xl border border-white/10 bg-slate-900/50 p-7 shadow-[0_0_0_1px_rgba(15,23,42,0.45)]">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand-400">Mission 1</p>
+          <h2 class="mt-3 text-2xl font-bold text-white">Projet OGI (Outil Gestion Indemnité)</h2>
+          <div class="mt-6 space-y-5 text-slate-300">
+            <p>
+              Le projet OGI répondait à un besoin clair : remplacer un système AS400 en production (une technologie datant de 1988) par une
+              solution moderne, sans interruption de service pour les gestionnaires. La difficulté principale consistait à faire coexister
+              l'existant et la nouvelle plateforme le temps de la transition. Pour assurer ce bon fonctionnement, 
+              j'ai travaillé en étroite collaboration avec les équipes métier pour comprendre les processus existants.
+            </p>
+            <div class="rounded-2xl border border-white/10 bg-slate-950/60 p-5">
+              <h3 class="text-lg font-semibold text-white">Mon rôle back-end</h3>
+              <p class="mt-3 leading-7">
+                Côté Spring Boot, j'ai participé à la création et à la modification d'API RESTful destinées à exposer et manipuler les données métier. 
+                L'enjeu était de proposer des services fiables et sécurisés pour accompagner la mise en place de la nouvelle architecture.
+              </p>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-slate-950/60 p-5">
+              <h3 class="text-lg font-semibold text-white">Mon rôle front-end</h3>
+              <p class="mt-3 leading-7">
+                Sur Angular, j'ai développé des interfaces modulaires pensées pour les usages métier réels.
+                J'ai notamment mis en place des validateurs, comme des expressions REGEX sur des champs sensibles (SIRET, E-CRAC, etc.)
+                et mis en place de l'auto-complétion avec des données lié au dossier en cours de saisie. 
+                Cette tache m'a demandé un forte communication avec les équipes métier.
+              </p>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-slate-950/60 p-5">
+              <h3 class="text-lg font-semibold text-white">Migration de données</h3>
+              <p class="mt-3 leading-7">
+                J'ai également pris part à l'analyse et à la migration des données de l'AS400 vers PostgreSQL. 
+                Cette phase a demandé une forte vigilance et de nombreuses vérifications sur la cohérence des données.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <article class="rounded-3xl border border-white/10 bg-slate-900/50 p-7 shadow-[0_0_0_1px_rgba(15,23,42,0.45)]">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand-400">Mission 2</p>
+          <h2 class="mt-3 text-2xl font-bold text-white">Site Web AXOPEN sous Next.js</h2>
+          <div class="mt-6 space-y-5 text-slate-300">
+            <p>
+              En parallèle du projet OGI, j'ai contribué au site vitrine public d'AXOPEN.
+              L'objectif étant d'avoir une présence web claire et cohérente avec l'image de l'entreprise.
+              J'ai travailler avec comme objectif de réaliser une UI/UX efficace.
+            </p>
+            <div class="rounded-2xl border border-white/10 bg-slate-950/60 p-5">
+              <h3 class="text-lg font-semibold text-white">Développement du site vitrine</h3>
+              <p class="mt-3 leading-7">
+                J'ai travaillé sur l'ajout de pages et de sections réutilisables, avec une
+                attention portée à la lisibilité, à la cohérence visuelle et à la simplicité de maintenance.
+              </p>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-slate-950/60 p-5">
+              <h3 class="text-lg font-semibold text-white">Contrainte technique SEO</h3>
+              <p class="mt-3 leading-7">
+                La contrainte principale consistait à générer des pages statiques avec Next.js pour optimiser le référencement naturel, tout
+                en conservant une connexion propre à Strapi pour alimenter le site depuis un CMS. Cette architecture permettait d'allier
+                performance, SEO et souplesse éditoriale.
+              </p>
+            </div>
+            
+          </div>
+        </article>
+      </section>
     </main>
   </body>
 </html>

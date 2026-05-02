@@ -39,11 +39,11 @@ const buildPortfolioData = () => ({
       color: "from-blue-500/40 to-indigo-500/40",
     },
     {
-      titre: "Validation Qualité (The Crew 2)",
+      titre: "Stage (The Crew 2)",
       categorie: "Expérience",
-      tags: ["QA", "Jeu Vidéo", "Ubisoft Ivory-Tower"],
+      tags: ["Jeu Vidéo","Decouverte","Ubisoft Ivory-Tower"],
       description:
-        "Découverte du pipeline qualité et tests de validation sur le jeu de course The Crew 2.",
+        "Découverte du monde du jeu vidéo autour du jeu The Crew 2.",
       lien: "projets/ubisoft.html",
       image: "img/Ubisoft_Ivory_Tower.png",
       colorClass: "border-cyan-400/40 bg-cyan-500/15 text-cyan-200",
@@ -98,6 +98,16 @@ const buildPortfolioData = () => ({
       image: "img/CasseBrique.png",
       colorClass: "border-rose-400/40 bg-rose-500/15 text-rose-200",
       color: "from-rose-500/40 to-pink-500/40",
+    },
+    {
+      titre: "Portfolio",
+      categorie: "Projet",
+      tags: ["Web", "AI gen", "Alpine.js", "Tailwind CSS"],
+      description: "Ce portfolio, développé avec Alpine.js et Tailwind CSS, en utilisant l'IA générative comme un outil extrêmement puissant",
+      lien: "projets/Portfolio.html",
+      image: "img/Portfolio.png",
+      colorClass: "border-gray-400/40 bg-gray-500/15 text-gray-200",
+      color: "from-gray-500/40 to-gray-600/40",
     },
     {
       titre: "Automate Cellulaire",
