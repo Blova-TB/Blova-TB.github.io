@@ -28,9 +28,9 @@ const buildPortfolioData = () => ({
       color: "from-sky-500/40 to-blue-600/40",
     },
     {
-      titre: "Développeur Web Full Stack",
+      titre: "Stage Développeur Web Full Stack",
       categorie: "Expérience",
-      tags: ["Java Spring Boot", "Angular", "PostgreSQL"],
+      tags: ["Stage", "Java Spring Boot", "Angular", "PostgreSQL"],
       description:
         "Stage chez Axopen (ESN Lyon) : refonte d'une application métier, génération de PDF et gestion de base de données.",
       lien: "projets/stage-esn.html",
@@ -39,9 +39,9 @@ const buildPortfolioData = () => ({
       color: "from-blue-500/40 to-indigo-500/40",
     },
     {
-      titre: "Stage (The Crew 2)",
+      titre: "Stage Ubisoft Ivory-Tower (The Crew 2)",
       categorie: "Expérience",
-      tags: ["Jeu Vidéo","Decouverte","Ubisoft Ivory-Tower"],
+      tags: ["Stage", "Jeu Vidéo", "Decouverte"],
       description:
         "Découverte du monde du jeu vidéo autour du jeu The Crew 2.",
       lien: "projets/ubisoft.html",
