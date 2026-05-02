@@ -21,7 +21,7 @@ const buildPortfolioData = () => ({
     {
       titre: "Le Nectar des Étoiles",
       categorie: "Jam",
-      tags: ["Unreal Engine", "BluePrint", "Narratif", "1ère Place (WonderJam Hiver 2026)"],
+      tags: ["Unreal Engine", "BluePrint", "1ère Place (WonderJam Hiver 2026)"],
       description: "Court jeu narratif (1ère place WonderJam Hiver 2026). Vivez une journée dans la peau d'un jeune ouvrier d'une station spatiale de production d'Oasis tropical.",
       lien: "https://blova.itch.io/nectar-des-etoiles",
       image: "img/LeNectarDesEtoiles.png",
@@ -52,8 +52,8 @@ const buildPortfolioData = () => ({
     {
       titre: "Teapot (Crayonneur)",
       categorie: "Projet",
-      tags: ["Unreal Engine", "C++", "Multiplayer Online", "Split Screen", "3D/2D Hybrid"],
-      description: "Une aventure coopérative en split-screen dans un complexe futuriste. Résolvez des énigmes uniques où les actions en 2D impactent le monde 3D grâce à la technologie du 'Crayonneur'.",
+      tags: ["Unreal Engine", "C++", "Coop Multiplayer Online", "Split Screen", "Defis techniques"],
+      description: "Une aventure a deux joueurs en split-screen ou en ligne dans un complexe futuriste. Résolvez des énigmes uniques où les actions en 2D impactent le monde 3D grâce à la technologie du 'Crayonneur'.",
       lien: "https://blova.itch.io/teapot-game",
       image: "img/Teapot.png",
       colorClass: "border-emerald-400/40 bg-emerald-500/15 text-emerald-200",
@@ -62,8 +62,8 @@ const buildPortfolioData = () => ({
     {
       titre: "Juste le Boat en faite",
       categorie: "Projet",
-      tags: ["Godot", "Action", "Survival", "AI", "Reinforcement Learning"],
-      description: "Devenez le roi des pirates dans ce jeu de conquête procédural. Inclut des IA de combat entraînées par Reinforcement Learning avec le plugin Godot RL Agents.",
+      tags: ["Godot", "AI", "Reinforcement Learning", "Generation Procédurale"],
+      description: "Devenez le roi des pirates dans ce jeu de conquête sur une map procédurale. Inclut des IA de combat entraînées par Reinforcement Learning avec le plugin Godot RL Agents.",
       lien: "https://blova.itch.io/juste-le-boat-en-faite",
       image: "img/JLBEF.png",
       colorClass: "border-cyan-400/40 bg-cyan-500/15 text-cyan-200",
@@ -72,8 +72,8 @@ const buildPortfolioData = () => ({
     {
       titre: "Stellar Echoes",
       categorie: "Projet",
-      tags: ["Unreal Engine","C++", "FPS", "Énigmes"],
-      description: "Prototype d'exploration et d'énigmes en vue FPS. Incarnez un humain dans une boucle temporelle sur une planète déserte. (Projet UQAC).",
+      tags: ["Unreal Engine","C++", "Niagara"],
+      description: "Prototype d'exploration et d'énigmes en vue FPS. Incarnez un humain dans une boucle temporelle sur une planète sans vie.",
       lien: "https://oridoshi.itch.io/stellar-echoes",
       image: "img/StellarEchoes.png",
       colorClass: "border-emerald-400/40 bg-emerald-500/15 text-emerald-200",
@@ -82,8 +82,8 @@ const buildPortfolioData = () => ({
     {
       titre: "Bomberman UQAC",
       categorie: "Projet",
-      tags: ["Unreal Engine", "C++", "Multijoueur Local", "Arcade"],
-      description: "Reproduction du célèbre jeu Bomberman en multijoueur local. Développé pour le cours de conception de jeux vidéo à l'UQAC.",
+      tags: ["Unreal Engine", "C++", "Multijoueur Local"],
+      description: "Reproduction du célèbre jeu Bomberman en multijoueur local.",
       lien: "https://blova.itch.io/bomberman-uqac",
       image: "img/BomberManUQAC.png",
       colorClass: "border-orange-400/40 bg-orange-500/15 text-orange-200",
@@ -92,7 +92,7 @@ const buildPortfolioData = () => ({
     {
       titre: "Casse Brique",
       categorie: "Projet",
-      tags: ["Unreal Engine", "C++", "2D Arcade", "Premier Jeu"],
+      tags: ["Unreal Engine", "C++", "Premier Jeu Unreal Engine"],
       description: "Mon tout premier jeu développé sur Unreal Engine ! Un casse-brique classique en 2D pour découvrir les bases du moteur.",
       lien: "https://blova.itch.io/cassebrique",
       image: "img/CasseBrique.png",
@@ -112,9 +112,9 @@ const buildPortfolioData = () => ({
     {
       titre: "Automate Cellulaire",
       categorie: "Projet",
-      tags: ["Java", "Simulation", "Algorithmes"],
+      tags: ["Java", "JavaFx", "Modularité","Personnalisable", "Simulation"],
       description:
-        "Simulation d'automates cellulaires (1D/2D) pour l'étude de systèmes complexes et de comportements émergents.",
+        "Simulation d'automates cellulaires (1D/2D) avec une architecture modulaire pour permettre l'ajout facile de nouveaux types d'automates.",
       lien: "https://github.com/antonin-slv/AutomateCellulaire",
       image: "img/AutomateCell1.png",
       colorClass: "border-blue-400/40 bg-blue-500/15 text-blue-200",
