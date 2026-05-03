@@ -192,6 +192,16 @@ const buildPortfolioData = () => ({
     const next = (current + 1) % this.categories.length;
     this.activeCategory = this.categories[next];
   },
+  scrollToCarouselTop() {
+    const categoryTabs = document.getElementById("project-category-tabs");
+    const projectsSection = document.getElementById("projets");
+    const scrollTarget = categoryTabs || projectsSection;
+    if (!scrollTarget) return;
+
+    const stickyHeaderOffset = 88;
+    const targetTop = Math.max(0, window.scrollY + scrollTarget.getBoundingClientRect().top - stickyHeaderOffset);
+    window.scrollTo({ top: targetTop, behavior: "smooth" });
+  },
   startDrag(e) {
     this.isDragging = true;
     const pointerX = e.touches ? e.touches[0].clientX : e.clientX;
@@ -238,8 +248,10 @@ const buildPortfolioData = () => ({
     this.isDragging = false;
     if (this.dragOffset < -50) {
       this.nextCategory();
+      this.scrollToCarouselTop();
     } else if (this.dragOffset > 50) {
       this.previousCategory();
+      this.scrollToCarouselTop();
     }
     this.dragOffset = 0;
     this.isScrolling = null;
