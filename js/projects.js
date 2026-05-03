@@ -104,7 +104,7 @@ const buildPortfolioData = () => ({
       categorie: "Projet",
       tags: ["Web", "AI gen", "Alpine.js", "Tailwind CSS"],
       description: "Ce portfolio, développé avec Alpine.js et Tailwind CSS, en utilisant l'IA générative comme un outil extrêmement puissant",
-      lien: "projets/Portfolio.html",
+      lien: "projets/portfolio.html",
       image: "img/Portfolio.png",
       colorClass: "border-gray-400/40 bg-gray-500/15 text-gray-200",
       color: "from-gray-500/40 to-gray-600/40",
