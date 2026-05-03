@@ -259,6 +259,126 @@
                 border-bottom: 1px solid #ddd;
             }
         }
+
+        /* Optimisation pour l'impression PDF */
+        @media print {
+            body {
+                padding: 0;
+                background-color: #ffffff;
+            }
+
+            .cv-container {
+                max-width: 100%;
+                box-shadow: none;
+                border-radius: 0;
+            }
+
+            .sidebar {
+                width: 32%;
+                padding: 20px 20px;
+                background-color: #e9ecef;
+            }
+
+            .main-content {
+                width: 72%;
+                padding: 20px 25px;
+            }
+
+            .profile-pic {
+                width: 140px;
+                height: 140px;
+                margin: 0 auto 20px;
+            }
+
+            .sidebar h2 {
+                font-size: 1.05em;
+                margin-top: 12px;
+                margin-bottom: 8px;
+                padding-bottom: 3px;
+            }
+
+            .sidebar ul li {
+                margin-bottom: 8px;
+                font-size: 0.92em;
+            }
+
+            .contact-item {
+                margin-left: -12px;
+                padding: 4px 6px;
+                gap: 10px;
+            }
+
+            .contact-icon {
+                width: 18px;
+                height: 18px;
+            }
+
+            .contact-label {
+                font-size: 0.75em;
+            }
+
+            .contact-value {
+                font-size: 0.92em;
+            }
+
+            .header-name h1 {
+                font-size: 2.2em;
+                margin: 0 0 5px 0;
+                line-height: 1;
+            }
+
+            .header-title {
+                font-size: 1em;
+                margin-bottom: 20px;
+            }
+
+            .main-content h2 {
+                font-size: 1.3em;
+                margin-top: 15px;
+                margin-bottom: 8px;
+                padding-bottom: 5px;
+            }
+
+            .section-item {
+                margin-bottom: 15px;
+            }
+
+            .section-item h3 {
+                font-size: 1.08em;
+                margin: 0 0 3px 0;
+            }
+
+            .section-item .date {
+                font-size: 0.9em;
+                margin-bottom: 6px;
+            }
+
+            .section-item p {
+                font-size: 0.95em;
+                line-height: 1.5;
+                margin: 0;
+            }
+
+            .project-link {
+                font-size: 0.9em;
+                padding: 2px 8px;
+                margin-left: 4px;
+            }
+
+            .project-link-icon {
+                width: 14px;
+                height: 14px;
+            }
+
+            .skills-list li {
+                margin-bottom: 7px;
+                font-size: 0.95em;
+            }
+
+            .skills-list strong {
+                width: 160px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -278,32 +398,6 @@
                         <span class="contact-value">blova-tb.github.io</span>
                     </div>
                 </a>
-            </div>
-            
-            <h2>Contact</h2>
-            <div class="contact-list">
-                <div class="contact-item">
-                    <img src="img/location.svg" alt="" class="contact-icon" aria-hidden="true">
-                    <div class="contact-text">
-                        <span class="contact-label">Localisation</span>
-                        <span class="contact-value">Lyon, France</span>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-text">
-                        <span class="contact-label">Téléphone</span>
-                        <span class="contact-value">+33 6 22 76 25 93</span>
-                        <span class="contact-value">+15 8 16 68 70 72</span>
-                    </div>
-                </div>
-
-                <div class="contact-item email">
-                    <div class="contact-text">
-                        <span class="contact-label">Email</span>
-                        <a class="contact-value" href="mailto:thomas.baptiste.blanche@gmail.com">thomas.baptiste.blanche@gmail.com</a>
-                    </div>
-                </div>
 
                 <a class="contact-item contact-link" href="https://github.com/Blova-TB" target="_blank" rel="noreferrer">
                     <img src="img/github.svg" alt="" class="contact-icon" aria-hidden="true">
@@ -313,12 +407,37 @@
                     </div>
                 </a>
             </div>
+            
+            <h2>Contact</h2>
+            <div class="contact-list">
+                <div class="contact-item">
+                    <div class="contact-text">
+                        <span class="contact-label">Téléphone</span>
+                        <span class="contact-value">+33 6 22 76 25 93</span>
+                        <span class="contact-value">+15 8 16 68 70 72</span>
+                    </div>
+                </div>
+                
+                <div class="contact-item email">
+                    <div class="contact-text">
+                        <span class="contact-label">Email</span>
+                        <a class="contact-value" href="mailto:thomas.baptiste.blanche@gmail.com">thomas.baptiste.blanche@gmail.com</a>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <img src="img/location.svg" alt="" class="contact-icon" aria-hidden="true">
+                    <div class="contact-text">
+                        <span class="contact-label">Localisation</span>
+                        <span class="contact-value">Lyon, France</span>
+                    </div>
+                </div>
+            </div>
 
             <h2>Formation</h2>
             <ul>
                 <li><strong>UQAC (Université du Québec à Chicoutimi)</strong><em> 2024-2026</em><br>Master Jeux Vidéo<br>Double Diplôme avec Polytech Lyon<br></li>
                 <li><strong>Polytech Lyon</strong> <em>2021-2026</em><br>Ingénieur Informatique<br></li>
-                <li><strong>Baccalauréat</strong> <em>2021</em><br>Mention Très Bien<br>Mathématiques & Physique Chimie<br>Lycée Pierre Brossolette<br></li>
             </ul>
 
             <h2>Langues</h2>
@@ -367,7 +486,7 @@
                 <div class="section-item">
                     <h3>Stage Découverte Entreprise - Ubisoft Ivory-Tower</h3>
                     <div class="date">Novembre 2018</div>
-                    <p>Après avoir assisté à une présentation des différents métiers de l'entreprise, j'ai assisté à la validation qualité du jeu de voitures The Crew 2.</p>
+                    <p>Après avoir aidé à une présentation des différents métiers de l'entreprise, j'ai assisté à la validation qualité du jeu de voitures The Crew 2.</p>
                 </div>
             </section>
 
@@ -376,7 +495,7 @@
                 <div class="section-item">
                     <div class="project-title">
                         <h3>Teapot (Crayonneur)</h3>
-                        <div class="date">Unreal Engine • multi online steam • multi local</div>
+                        <div class="date">Unreal Engine • multi local/online steam </div>
                     </div>
                     <p>Jeu coopératif utilisant une projection du monde 3D sur un gameplay 2D. Support multijoueur local et multijoueur en ligne par Steam. <a class="project-link" href="https://blova.itch.io/teapot-game" target="_blank" rel="noreferrer"><img src="img/itchio.svg" alt="" class="project-link-icon" aria-hidden="true"><span>itch.io</span></a></p>
                 </div>
