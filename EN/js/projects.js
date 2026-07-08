@@ -169,7 +169,7 @@ const buildPortfolioData = () => ({
       tags: ["Cybersecurity", "Access Control", "Hardening"],
       description:
         "Studies of application and network security mechanisms, access control, and best practices for securing data flows.",
-      lien: "#",
+      lien: "projets/security.html",
       image: "img/security.png",
       colorClass: "border-emerald-400/40 bg-emerald-500/15 text-emerald-200",
       color: "from-emerald-500/40 to-cyan-500/40",
