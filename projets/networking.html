@@ -1,20 +1,115 @@
 <!doctype html>
 <html lang="fr">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Système Multiplayer — Thomas Blanché</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
-      rel="stylesheet"
+    <meta
+      name="description"
+      content="Projet Networking (UQAC) — Système multiplayer C++ développé par Thomas Blanché. Découvrez les concepts fondamentaux du développement de systèmes multiplayer, la synchronisation des états, la gestion des connexions et la communication réseau efficace."
     />
+    <title>Networking Multiplayer — Thomas Blanché</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+            },
+            colors: {
+              brand: {
+                400: "#60A5FA",
+                500: "#3B82F6",
+                600: "#2563EB",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+    </style>
   </head>
+  
   <body class="min-h-screen bg-slate-950 font-sans text-slate-100 antialiased" style="font-family: Inter, system-ui, sans-serif">
-    <main class="mx-auto max-w-3xl px-5 py-12 md:px-8">
-      <a href="../index.html#projets" class="text-sm text-violet-400 transition hover:text-violet-300">← Retour au portfolio</a>
-      <h1 class="mt-8 text-3xl font-bold text-white">Projet Networking (UQAC) — Système multiplayer C++</h1>
-      <p class="mt-4 text-slate-300">Page de détail à compléter (prédiction / correction, réplication).</p>
+    <header class="sticky top-0 z-50 border-b border-white/10 bg-slate-950/80 backdrop-blur">
+      <nav class="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4 md:px-8" aria-label="Navigation principale">
+        <a href="../index.html#projets" class="text-sm font-semibold text-slate-200 transition hover:text-white md:text-base">
+          ← Retour au portfolio
+        </a>
+        <a href="https://www.linkedin.com/in/thomas-blanche" target="_blank" class="rounded-full border border-brand-500/40 bg-brand-500/10 px-4 py-2 text-sm font-medium text-brand-400 transition hover:border-brand-400 hover:bg-brand-500/20 hover:text-white">
+          Contact
+        </a>
+      </nav>
+    </header>
+
+    <main class="mx-auto w-full max-w-6xl px-5 pb-16 pt-12 md:px-8 md:pb-24 md:pt-16">
+      <section class="grid gap-8 lg:grid-cols-[minmax(0,1.5fr)_minmax(320px,0.85fr)] lg:items-start">
+        <div class="space-y-8">
+          <div class="max-w-3xl">
+            <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
+              Networking Multiplayer
+            </h1>
+            <p class="mt-6 max-w-2xl text-base leading-8 text-slate-300 md:text-lg">
+              Lors de ce cours, j'ai exploré les concepts fondamentaux du développement de systèmes multiplayer en C++.
+              Lors de plusieurs travaux pratiques j'ai pu mettre en pratique plusieurs de ces concepts sur Unreal Engine 5.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-16 rounded-3xl border border-white/10 bg-slate-900/50 p-7 shadow-[0_0_0_1px_rgba(15,23,42,0.45)] md:p-8">
+        <div class="max-w-3xl">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand-400">Thèmes abordés</p>
+          <h2 class="mt-3 text-2xl font-bold text-white">Compétences et concepts clés en réseau</h2>
+          <p class="mt-5 text-slate-300 leading-8">
+            Voici les principaux sujets explorés durant ce cours de programmation multijoueur :<br><br>
+            <ul class="list-disc pl-5 space-y-2">
+              <li><strong>Architectures Réseau :</strong> Modèles Serveur Dédié vs Peer-to-Peer (P2P), protocoles (TCP/UDP) et concepts de connexion de base (IP, Ports, LAN).</li>
+              <li><strong>Réplication et Autorité :</strong> Principe d'autorité du serveur (Server Authority), réplication de variables/acteurs, et <em>Remote Procedure Calls</em> (RPCs - Server, Client, Multicast).</li>
+              <li><strong>Gameplay Framework (Unreal) :</strong> Utilisation des classes réseaux (GameMode, GameState, PlayerState, PlayerController) et synchronisation de l'état du jeu.</li>
+              <li><strong>Transitions (Travelling) :</strong> Gestion des changements de cartes en multijoueur (ClientTravel, ServerTravel) avec et sans interruption (Seamless Travel).</li>
+              <li><strong>Compensation du Lag :</strong> Techniques pour contrer la latence (Ping, Server Reconciliation, <em>Rewinding Time</em> pour la validation des tirs/hits).</li>
+              <li><strong>Optimisation Réseau :</strong> Réduction de la bande passante (Network Profiler), gestion de la pertinence (Relevancy, Net Cull Distance), et <em>Net Dormancy</em>.</li>
+              <li><strong>Services en Ligne (Online Subsystem) :</strong> Intégration de services tiers (Steam, Epic) pour la création de sessions (Lobbies, Matchmaking) et les succès (Achievements).</li>
+            </ul>
+          </p>
+        </div>
+      </section>
+
+      <section class="mt-16 rounded-3xl border border-white/10 bg-slate-900/50 p-7 shadow-[0_0_0_1px_rgba(15,23,42,0.45)] md:p-8">
+        <div class="max-w-3xl">
+          <p class="text-xs font-semibold uppercase tracking-[0.2em] text-brand-400">Mise en pratique</p>
+          <h2 class="mt-3 text-2xl font-bold text-white">Travaux Pratiques sur Unreal Engine 5</h2>
+          <p class="mt-5 text-slate-300 leading-8">
+            La théorie de ce cours a été mise en application à travers trois projets majeurs développés en C++ sous Unreal Engine, permettant de relever les véritables défis du développement multijoueur :<br><br>
+            <ul class="list-disc pl-5 space-y-3">
+              <li><strong>Système de Lobby et Synchronisation :</strong> Création d'un espace d'attente permettant d'héberger ou de rejoindre une partie. Implémentation de la sélection de personnages, de la synchronisation d'un compte à rebours tolérant à la latence, et d'une transition sans coupure (<em>Seamless Travel</em>) vers la carte de jeu.</li>
+              <li><strong>Compensation de la latence (Server Rewind) :</strong> Développement d'une mécanique avancée pour valider les tirs des joueurs côté serveur. Le système "remonte le temps" pour vérifier l'exactitude d'un tir selon la perspective du client au moment de l'action, supportant un ping allant jusqu'à 500 ms.</li>
+              <li><strong>Intégration de l'Online Subsystem Steam :</strong> Remplacement des connexions par IP directes au profit de l'infrastructure de Steam. Mise en place du <em>matchmaking</em> (hébergement et recherche de sessions par filtres) et déblocage de succès (<em>Achievements</em>) directement liés au compte Steam.</li>
+            </ul>
+          </p>
+
+          <img src="../img/TPReseau.png" alt="Capture d'écran du projet de réseau multijoueur" class="mt-8 w-full rounded-lg border border-white/10 shadow-[0_0_0_1px_rgba(15,23,42,0.45)]" />
+
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="../index.html#projets" class="inline-flex items-center justify-center rounded-full border border-white/15 px-5 py-3 text-sm font-semibold text-slate-200 transition hover:border-brand-400 hover:text-white">
+              ← Retour au portfolio
+            </a>
+            <a href="https://www.linkedin.com/in/thomas-blanche" target="_blank" class="rounded-full inline-flex items-center border border-brand-500/40 bg-brand-500/10 px-4 py-2 text-sm font-medium text-brand-400 transition hover:border-brand-400 hover:bg-brand-500/20 hover:text-white">
+              Me contacter
+            </a>
+          </div>
+        </div>
+      </section>
+
     </main>
   </body>
 </html>

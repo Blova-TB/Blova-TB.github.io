@@ -148,7 +148,7 @@ const buildPortfolioData = () => ({
       description:
         "Design of a multiplayer system with client prediction, server correction, and state synchronization.",
       lien: "projets/networking.html",
-      image: "img/networking.png",
+      image: "img/PPTPReseau.png",
       colorClass: "border-violet-400/40 bg-violet-500/15 text-violet-200",
       color: "from-violet-500/40 to-fuchsia-500/40",
     },
