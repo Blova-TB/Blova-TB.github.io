@@ -1,0 +1,48 @@
+#analog-clock {
+  --hour-angle: 0deg;
+  --minute-angle: 0deg;
+}
+
+#hand-hour {
+  transform-origin: 100px 100px;
+  transform: rotate(var(--hour-angle));
+}
+
+#hand-minute {
+  transform-origin: 100px 100px;
+  transform: rotate(var(--minute-angle));
+  transition: transform 0.0s linear; 
+}
+
+.draggable {
+  cursor: grab;
+}
+.draggable:active {
+  cursor: grabbing;
+}
+
+.digital-time.hidden {
+  visibility: hidden;
+}
+
+.clock-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100vw;
+}
+
+.analog-clock {
+  height: 80vh;
+}
+
+.controls-container {
+    width: 50%;
+}
+
+.digital-time {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 10rem;
+  margin-left: 20px;
+}
