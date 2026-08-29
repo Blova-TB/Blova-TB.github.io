@@ -146,15 +146,27 @@ class ClockController {
             if (newHours > 23) newHours = 0;
 
             this.state.totalMinutes = (newHours * 60) + newMinutes;
-        } 
-        else if (this.state.activeHand === 'hour') {
-            // L'aiguille des heures parcourt 12h (720 minutes) sur 360 degrés
-            // 1 degré = 2 minutes
-            let timeIn12h = Math.round(angle * 2); 
-            if (timeIn12h === 720) timeIn12h = 0;
-            
-            // On maintient le cycle AM/PM actuel pendant la manipulation de l'heure
-            this.state.totalMinutes = timeIn12h + pmOffset;
+        } else if (this.state.activeHand === 'hour') {
+            const MINUTES_IN_12H = 720;
+            const MINUTES_IN_24H = 1440;
+            const HALF_CYCLE = 360;
+
+            const currentMinutesIn12h = this.state.totalMinutes % MINUTES_IN_12H;
+            const newMinutesIn12h = Math.round(angle * 2); // 1 degré = 2 minutes
+
+            let deltaMinutes = newMinutesIn12h - currentMinutesIn12h;
+
+            // Détection du franchissement de minuit/midi (seuil de 180° / 360 minutes)
+            if (deltaMinutes > HALF_CYCLE) {
+                // Mouvement anti-horaire (ex: 1h -> 11h)
+                deltaMinutes -= MINUTES_IN_12H;
+            } else if (deltaMinutes < -HALF_CYCLE) {
+                // Mouvement horaire (ex: 11h -> 1h)
+                deltaMinutes += MINUTES_IN_12H;
+            }
+
+            // Application du delta modulo 24h pour éviter les valeurs négatives ou supérieures à 1439
+            this.state.totalMinutes = (this.state.totalMinutes + deltaMinutes + MINUTES_IN_24H) % MINUTES_IN_24H;
         }
     }
 
