@@ -21,12 +21,17 @@
             <circle cx="100" cy="100" r="95" stroke="#333" stroke-width="2" fill="#fff"/>
             
             <!-- Repères horaires (générables via JS, mais statiques ici pour les performances) -->
+            
+            <!--
             <g id="clock-marks" stroke="#333" stroke-width="2" stroke-linecap="round">
-                <line x1="100" y1="10" x2="100" y2="20" /> <!-- 12 -->
-                <line x1="190" y1="100" x2="180" y2="100" /> <!-- 3 -->
-                <line x1="100" y1="190" x2="100" y2="180" /> <!-- 6 -->
-                <line x1="10" y1="100" x2="20" y2="100" /> <!-- 9 -->
+                <line x1="100" y1="10" x2="100" y2="20" />
+                <line x1="190" y1="100" x2="180" y2="100" />
+                <line x1="100" y1="190" x2="100" y2="180" />
+                <line x1="10" y1="100" x2="20" y2="100" />
             </g>
+            -->
+            
+            <g id="clock-marks"></g>
 
             <!-- Aiguille des heures -->
             <line id="hand-hour" class="draggable" data-type="hour" 

@@ -1,3 +1,6 @@
+
+const SVG_NS = "http://www.w3.org/2000/svg";
+
 class ClockController {
     /**
      * @param {HTMLElement} svgElement 
@@ -16,8 +19,54 @@ class ClockController {
             activeHand: null
         };
 
+        this.drawClockMarks();
         this.initEvents();
         this.render();
+    }
+
+    /**
+     * Génère dynamiquement les 60 repères du cadran.
+     * Utilise un DocumentFragment pour optimiser l'insertion DOM.
+     */
+    drawClockMarks() {
+        const marksGroup = this.svg.querySelector('#clock-marks');
+        if (!marksGroup) throw new Error("L'élément #clock-marks est introuvable dans le SVG.");
+
+        const fragment = document.createDocumentFragment();
+        const centerX = 100;
+        const centerY = 100;
+        const radiusEdge = 5; // cx (100) - r (95)
+
+        for (let i = 0; i < 60; i++) {
+            const isQuarter = i % 15 === 0;
+            const isFiveMinute = i % 5 === 0;
+
+            const line = document.createElementNS(SVG_NS, 'line');
+            
+            // Origine alignée sur l'axe Y (Midi)
+            line.setAttribute('x1', centerX);
+            line.setAttribute('y1', radiusEdge);
+            line.setAttribute('x2', centerX);
+            
+            // Définition de la longueur et du style selon le type de repère
+            if (isQuarter) {
+                line.setAttribute('y2', radiusEdge + 15);
+                line.setAttribute('class', 'mark-quarter');
+            } else if (isFiveMinute) {
+                line.setAttribute('y2', radiusEdge + 10);
+                line.setAttribute('class', 'mark-five');
+            } else {
+                line.setAttribute('y2', radiusEdge + 5);
+                line.setAttribute('class', 'mark-minute');
+            }
+
+            // Rotation autour du centre du SVG (i * 6 degrés = 360 / 60)
+            line.setAttribute('transform', `rotate(${i * 6} ${centerX} ${centerY})`);
+            
+            fragment.appendChild(line);
+        }
+
+        marksGroup.appendChild(fragment);
     }
 
     initEvents() {
