@@ -9,7 +9,7 @@
 <body>
     <main class="clock-container">
         <!-- SVG ViewBox pour redimensionnement fluide. touch-action="none" délégué au CSS ou ici pour bloquer le scroll natif -->
-        <svg class="analog-clock" id="analog-clock" viewBox="0 0 200 200" width="100%" height="100%" aria-label="Horloge analogique interactive">
+        <svg class="analog-clock" id="analog-clock" viewBox="-30 -30 260 260" width="100%" height="100%" aria-label="Horloge analogique interactive">
             <defs>
                 <!-- Filtre optionnel pour l'ombre des aiguilles -->
                 <filter id="drop-shadow" x="-20%" y="-20%" width="140%" height="140%">
@@ -20,29 +20,20 @@
             <!-- Cadran -->
             <circle cx="100" cy="100" r="95" stroke="#333" stroke-width="2" fill="#fff"/>
             
-            <!-- Repères horaires (générables via JS, mais statiques ici pour les performances) -->
-            
-            <!--
-            <g id="clock-marks" stroke="#333" stroke-width="2" stroke-linecap="round">
-                <line x1="100" y1="10" x2="100" y2="20" />
-                <line x1="190" y1="100" x2="180" y2="100" />
-                <line x1="100" y1="190" x2="100" y2="180" />
-                <line x1="10" y1="100" x2="20" y2="100" />
-            </g>
-            -->
-            
             <g id="clock-marks"></g>
+
+            <g id="clock-numbers"></g>
+
+            <!-- Aiguille des minutes -->
+            <line id="hand-minute" class="draggable" data-type="minute" 
+                  x1="100" y1="100" x2="100" y2="24" 
+                  stroke="#0b00a4" stroke-width="4" stroke-linecap="round" 
+                  />
 
             <!-- Aiguille des heures -->
             <line id="hand-hour" class="draggable" data-type="hour" 
-                  x1="100" y1="100" x2="100" y2="45" 
-                  stroke="#2c3e50" stroke-width="6" stroke-linecap="round" 
-                  />
-                  
-            <!-- Aiguille des minutes -->
-            <line id="hand-minute" class="draggable" data-type="minute" 
-                  x1="100" y1="100" x2="100" y2="20" 
-                  stroke="#e74c3c" stroke-width="4" stroke-linecap="round" 
+                  x1="100" y1="100" x2="100" y2="50" 
+                  stroke="#e74c3c" stroke-width="6" stroke-linecap="round" 
                   />
                   
             <!-- Axe central -->
@@ -51,10 +42,32 @@
         </svg>
         
         <section class="controls-container">
-            <div id="digital-display" class="digital-time" aria-live="polite">12:00</div>
-            <button id="toggle-display" type="button" aria-controls="digital-display">
+            <div class="digital-time">
+                <div class="digital-time-hours" id="digital-time-hours">
+                    12
+                </div>
+                :
+                <div class="digital-time-minutes" id="digital-time-minutes">
+                    00
+                </div>
+            </div>
+            <div class="digital-time-ampm" id="digital-time-ampm">
+                De l'après-midi
+            </div>
+            <button id="toggle-display" type="button">
                 Afficher/Masquer l'heure
             </button>
+            <div class="options">
+                <button id="toggle-ampm" type="button">
+                    matin / après-midi
+                </button>
+                <button id="toggle-h-number" type="button">
+                    Chiffres des heures
+                </button>
+                <button id="toggle-m-number" type="button">
+                    Chiffres des minutes
+                </button>
+            </div>
         </section>
     </main>
 
