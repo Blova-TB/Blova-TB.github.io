@@ -20,7 +20,7 @@
 
     .digital-time {
       font-family: 'Courier New', Courier, monospace;
-      font-size: 9rem;
+      font-size: 4rem;
       font-weight: bold;
       display: flex;
       flex-direction: row;
@@ -36,7 +36,7 @@
 
     .digital-time-ampm {
       font-family: 'Courier New', Courier, monospace;
-      font-size: 3rem;
+      font-size: 2rem;
       font-weight: bold;
       display: flex;
       flex-direction: row;
@@ -80,9 +80,19 @@
     stroke-linecap: round;
 }
 
-.hour-text {
+.hour-text-am {
     fill: #e74c3c; /* Rouge */
     font-size: 16px;
+    font-weight: bold;
+    font-family: sans-serif;
+    text-anchor: middle;
+    dominant-baseline: central;
+    pointer-events: none; /* Empêche l'interférence avec le drag des aiguilles */
+}
+
+.hour-text-pm {
+    fill: #e74c3c; /* Rouge */
+    font-size: 9px;
     font-weight: bold;
     font-family: sans-serif;
     text-anchor: middle;
@@ -97,6 +107,16 @@
     text-anchor: middle;
     dominant-baseline: central;
     pointer-events: none;
+}
+
+.quarter-1 { fill: rgba(255, 99, 132, 0.3); } /* 0-15 min */
+.quarter-2 { fill: rgba(54, 162, 235, 0.3); } /* 15-30 min */
+.quarter-3 { fill: rgba(255, 206, 86, 0.3); } /* 30-45 min */
+.quarter-4 { fill: rgba(75, 192, 192, 0.3); } /* 45-60 min */
+
+/* Évite l'interception des événements de drag par les chemins SVG */
+.quarter-path {
+    pointer-events: none; 
 }
 
 .hidden {

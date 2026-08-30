@@ -9,7 +9,7 @@
 <body>
     <main class="clock-container">
         <!-- SVG ViewBox pour redimensionnement fluide. touch-action="none" délégué au CSS ou ici pour bloquer le scroll natif -->
-        <svg class="analog-clock" id="analog-clock" viewBox="-30 -30 260 260" width="100%" height="100%" aria-label="Horloge analogique interactive">
+        <svg class="analog-clock" id="analog-clock" viewBox="-20 -20 240 240" width="100%" height="100%" aria-label="Horloge analogique interactive">
             <defs>
                 <!-- Filtre optionnel pour l'ombre des aiguilles -->
                 <filter id="drop-shadow" x="-20%" y="-20%" width="140%" height="140%">
@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="digital-time-ampm" id="digital-time-ampm">
-                De l'après-midi
+                Matin
             </div>
             <button id="toggle-display" type="button">
                 Afficher/Masquer l'heure
@@ -64,15 +64,17 @@
                 <button id="toggle-h-number" type="button">
                     Chiffres des heures
                 </button>
+            </div>
+            <div class="options">
                 <button id="toggle-m-number" type="button">
                     Chiffres des minutes
+                </button>
+                <button id="toggle-quarters" type="button">
+                    Quarts d'heure
                 </button>
             </div>
         </section>
     </main>
-
-    <!-- Import du script en tant que module (permet strict mode implicite et encapsulation) 
-    <script type="module" src="./horloge.js"></script>-->
     <script defer src="./horloge.js"></script>
 </body>
 </html>

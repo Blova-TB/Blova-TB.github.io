@@ -12,7 +12,7 @@ class ClockController {
      * @param {HTMLElement} toggleHNumberBtn
      * @param {HTMLElement} toggleMNumberBtn
      */
-    constructor(svgElement, digitalHoursElement, digitalMinutesElement, digitalAMPMElement, toggleBtn, toggleAMPMBtn, toggleHNumberBtn, toggleMNumberBtn) {
+    constructor(svgElement, digitalHoursElement, digitalMinutesElement, digitalAMPMElement, toggleBtn, toggleAMPMBtn, toggleHNumberBtn, toggleMNumberBtn, toggleQuartersBtn) {
         this.svg = svgElement;
         this.digitalHours = digitalHoursElement;
         this.digitalMinutes = digitalMinutesElement;
@@ -21,15 +21,17 @@ class ClockController {
         this.toggleAMPMBtn = toggleAMPMBtn;
         this.toggleHNumberBtn = toggleHNumberBtn;
         this.toggleMNumberBtn = toggleMNumberBtn;
+        this.toggleQuartersBtn = toggleQuartersBtn;
         
         // État : temps absolu en minutes (0 - 1439 pour 24h)
         this.state = {
-            totalMinutes: 720, // Init à 12:00
+            totalMinutes: 610,
             isDragging: false,
             activeHand: null,
             lockedAMPM: true, // si false affichage des heures cassé
         };
 
+        this.drawQuarters();
         this.drawClockMarks();
         this.drawNumbers();
         this.initEvents();
@@ -48,15 +50,14 @@ class ClockController {
 
             if (this.state.totalMinutes < 720) {
                 this.state.totalMinutes += 720; // Passer à l'après-midi
-                this.digitalAMPM.textContent = `De l'après-midi`;
+                this.digitalAMPM.textContent = `Après-midi`;
             } else {
                 this.state.totalMinutes -= 720; // Passer au matin
-                this.digitalAMPM.textContent = `De la matinée`;
+                this.digitalAMPM.textContent = `Matin`;
             }
             this.render();
 
-            if (!this.hourGroupAM.classList.contains('hidden') || !this.hourGroupPM.classList.contains('hidden')) {
-                this.hourGroupAM.classList.toggle('hidden');
+            if (!this.hourGroupAM.classList.contains('hidden')) {
                 this.hourGroupPM.classList.toggle('hidden');
             }
         });
@@ -64,16 +65,16 @@ class ClockController {
         // Toggle Heures
         this.toggleHNumberBtn.addEventListener('click', () => {
 
-            if (this.hourGroupAM.classList.contains('hidden') && this.hourGroupPM.classList.contains('hidden')) {
-                if (this.state.totalMinutes < 720) {
-                    this.hourGroupAM.classList.remove('hidden');
-                } else {
+            if (this.hourGroupAM.classList.contains('hidden')) {
+
+                this.hourGroupAM.classList.remove('hidden');
+                if (this.state.totalMinutes >= 720) {
                     this.hourGroupPM.classList.remove('hidden');
                 }
+
             } else {
-                if (!this.hourGroupAM.classList.contains('hidden')){
-                    this.hourGroupAM.classList.toggle('hidden');
-                }
+            
+                this.hourGroupAM.classList.toggle('hidden');
                 if (!this.hourGroupPM.classList.contains('hidden')){
                     this.hourGroupPM.classList.toggle('hidden');
                 }
@@ -85,10 +86,48 @@ class ClockController {
             this.minuteGroup.classList.toggle('hidden');
         });
 
+        // Toggle Quarts d'heure
+        this.toggleQuartersBtn.addEventListener('click', () => {
+            this.quartersGroup.classList.toggle('hidden');
+        });
+
         // Pointer Events pour unification Souris / Touch
         this.svg.addEventListener('pointerdown', this.onPointerDown.bind(this));
         document.addEventListener('pointermove', this.onPointerMove.bind(this));
         document.addEventListener('pointerup', this.onPointerUp.bind(this));
+    }
+
+    /**
+     * Génère les 4 sections de 15 minutes (chemins SVG)
+     * Z-Index SVG : Inséré après le cercle de fond, avant les repères
+     */
+    drawQuarters() {
+        this.quartersGroup = document.createElementNS(SVG_NS, 'g');
+        this.quartersGroup.classList.add('hidden', 'quarter-path');
+
+        // Syntaxe Arc SVG (A): rx ry x-axis-rotation large-arc-flag sweep-flag x y
+        const quartersData = [
+            { path: 'M 100 100 L 100 5 A 95 95 0 0 1 195 100 Z', className: 'quarter-1' },
+            { path: 'M 100 100 L 195 100 A 95 95 0 0 1 100 195 Z', className: 'quarter-2' },
+            { path: 'M 100 100 L 100 195 A 95 95 0 0 1 5 100 Z', className: 'quarter-3' },
+            { path: 'M 100 100 L 5 100 A 95 95 0 0 1 100 5 Z', className: 'quarter-4' }
+        ];
+
+        const fragment = document.createDocumentFragment();
+
+        for (const q of quartersData) {
+            const pathElement = document.createElementNS(SVG_NS, 'path');
+            pathElement.setAttribute('d', q.path);
+            pathElement.setAttribute('class', q.className);
+            fragment.appendChild(pathElement);
+        }
+
+        this.quartersGroup.appendChild(fragment);
+
+        // Insertion stricte dans le DOM juste après le cercle de base pour le Layering (z-index)
+        const baseCircle = this.svg.querySelector('circle');
+        if (!baseCircle) throw new Error("Cercle de base introuvable pour l'insertion des quarts.");
+        baseCircle.after(this.quartersGroup);
     }
 
     /**
@@ -139,8 +178,9 @@ class ClockController {
     drawNumbers() {
         const centerX = 100;
         const centerY = 100;
-        const radiusHour = 70;   // Intérieur du cadran
-        const radiusMinute = 115; // Extérieur du cadran (nécessite viewBox="-30 -30 260 260")
+        const radiusHourAm = 72;   // Intérieur du cadran
+        const radiusHourPm = 58;   // Intérieur du cadran
+        const radiusMinute = 110;  // Extérieur du cadran (nécessite viewBox="-30 -30 260 260")
 
         this.hourGroupAM = document.createElementNS(SVG_NS, 'g');
         this.hourGroupPM = document.createElementNS(SVG_NS, 'g');
@@ -163,17 +203,17 @@ class ClockController {
 
             // Génération des Heures (1 à 12)
             const hText = document.createElementNS(SVG_NS, 'text');
-            hText.setAttribute('x', centerX + radiusHour * cos);
-            hText.setAttribute('y', centerY + radiusHour * sin);
-            hText.setAttribute('class', 'hour-text');
+            hText.setAttribute('x', centerX + radiusHourAm * cos);
+            hText.setAttribute('y', centerY + radiusHourAm * sin);
+            hText.setAttribute('class', 'hour-text-am');
             hText.textContent = i.toString();
             fragmentHAM.appendChild(hText);
 
             // Génération des Heures (13 à 00)
             const hText2 = document.createElementNS(SVG_NS, 'text');
-            hText2.setAttribute('x', centerX + radiusHour * cos);
-            hText2.setAttribute('y', centerY + radiusHour * sin);
-            hText2.setAttribute('class', 'hour-text');
+            hText2.setAttribute('x', centerX + radiusHourPm * cos);
+            hText2.setAttribute('y', centerY + radiusHourPm * sin);
+            hText2.setAttribute('class', 'hour-text-pm');
             hText2.textContent = (i + 12).toString();
             fragmentHPM.appendChild(hText2);
 
@@ -308,8 +348,8 @@ class ClockController {
     }
 
     render() {
-        const hours = Math.floor(this.state.totalMinutes / 60);
-        const minutes = this.state.totalMinutes % 60;
+        let hours = Math.floor(this.state.totalMinutes / 60);
+        let minutes = this.state.totalMinutes % 60;
 
         // Calcul des angles de rendu
         const minuteAngle = minutes * 6; // 360 / 60
@@ -319,6 +359,14 @@ class ClockController {
         // Rendu SVG (via CSS Variables)
         this.svg.style.setProperty('--minute-angle', `${minuteAngle}deg`);
         this.svg.style.setProperty('--hour-angle', `${hourAngle}deg`);
+
+        // la darone a dit "échanger les heures 0 et 12 pour l'affichage digital"
+        if (minutes === 0 && hours === 0) {
+            hours = 12; 
+        } else if (minutes === 0 && hours === 12) {
+            hours = 0;
+        }
+
 
         // Rendu Digital (format 24h avec padding de zéros)
         const formatH = String(hours).padStart(2, '0');
@@ -338,5 +386,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const toggleAMPM = document.getElementById('toggle-ampm');
     const toggleHNumber = document.getElementById('toggle-h-number');
     const toggleMNumber = document.getElementById('toggle-m-number');
-    new ClockController(svg, digitalHours, digitalMinutes, digitalAMPM, toggle, toggleAMPM, toggleHNumber, toggleMNumber);
+    const toggleQuarters = document.getElementById('toggle-quarters');
+    new ClockController(svg, digitalHours, digitalMinutes, digitalAMPM, toggle, toggleAMPM, toggleHNumber, toggleMNumber, toggleQuarters);
 });
