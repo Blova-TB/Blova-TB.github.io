@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>test multi Horloge Éducative</title>
+    <link rel="stylesheet" href="doubleHorloge.css">
+</head>
+<body>
+    <iframe class="hidden" id="horloge1" src="horloge.html" width="500" height="800" style="border: none;"></iframe>
+    <div class="spacer">
+        <button type="button">
+            +
+        </button>
+        <button type="button" id="horloge1-toggle">
+            Add
+        </button>
+        <button type="button">
+            -
+        </button>
+    </div>
+    <iframe src="horloge.html" width="500" height="800" style="border: none;"></iframe>
+</body>
+
+</html>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const spacer = document.querySelector('.spacer');
+        if (!spacer) {
+            console.warn('Element .spacer introuvable.');
+            return;
+        }
+
+        const increaseBtn = spacer.querySelector('button:first-of-type');
+        const decreaseBtn = spacer.querySelector('button:last-of-type');
+        const toggleBtn = spacer.querySelector('#horloge1-toggle');
+
+        if (!increaseBtn || !decreaseBtn) {
+            console.warn('Boutons d\'incrémentation/décrémentation introuvables dans .spacer.');
+            return;
+        }
+
+        const SIZE_STEP_PX = 30;
+        // Définit une taille minimale pour éviter de masquer les boutons (à ajuster selon votre CSS)
+        const MIN_WIDTH_PX = 100; 
+
+        /**
+         * Met à jour la largeur du spacer.
+         * @param {number} delta - Valeur en pixels à ajouter (positive ou négative).
+         */
+        const updateSpacerWidth = (delta) => {
+            // window.getComputedStyle garantit la récupération de la valeur réelle calculée par le DOM
+            const computedStyle = window.getComputedStyle(spacer);
+            const currentWidth = parseFloat(computedStyle.width) || 0;
+            
+            const newWidth = Math.max(MIN_WIDTH_PX, currentWidth + delta);
+            
+            spacer.style.width = `${newWidth}px`;
+        };
+
+        increaseBtn.addEventListener('click', () => updateSpacerWidth(SIZE_STEP_PX));
+        decreaseBtn.addEventListener('click', () => updateSpacerWidth(-SIZE_STEP_PX));
+        toggleBtn.addEventListener('click', () => {
+            const horloge1 = document.getElementById('horloge1');
+            if (horloge1) {
+                if(horloge1.classList.contains('hidden')){
+                    toggleBtn.textContent = 'Del';
+                } else {
+                    toggleBtn.textContent = 'Add';
+                }
+                horloge1.classList.toggle('hidden');
+
+            } else {
+                console.warn('Iframe #horloge1 introuvable.');
+            }
+        });
+    });
+
+</script>
